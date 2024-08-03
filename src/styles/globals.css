@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+@layer base {
+  body {
+    @apply bg-background text-text;
+  }
+}
+
+@layer utilities {
+  .bg-primary-gradient {
+    background-image: linear-gradient(
+      to right,
+      var(--tw-gradient-from),
+      var(--tw-gradient-to)
+    );
+    --tw-gradient-from: #e67d6e;
+    --tw-gradient-to: #dc4b34;
+  }
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #e67d6e, #dc4b34);
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
