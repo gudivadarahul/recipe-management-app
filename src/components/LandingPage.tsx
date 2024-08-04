@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FaBook, FaClipboardList, FaUsers, FaArrowRight } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import DarkModeToggle from "./DarkModeToggle";
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -18,8 +19,11 @@ const Navbar: React.FC = () => (
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-    ></motion.div>
+    >
+      {/* Add your logo here */}
+    </motion.div>
     <div className="flex items-center space-x-8">
+      <DarkModeToggle />
       <motion.div
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -27,7 +31,7 @@ const Navbar: React.FC = () => (
       >
         <Link
           href="/sign-up"
-          className="text-primary-700 hover:text-primary-800 transition-colors"
+          className="text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200 transition-colors"
         >
           Sign Up
         </Link>
@@ -66,7 +70,7 @@ const HeroSection: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-xl text-textLight mb-10 max-w-2xl leading-relaxed"
+        className="text-xl text-textLight dark:text-textLight-dark mb-10 max-w-2xl leading-relaxed"
       >
         The Forgotten Cookbook: Where cherished family recipes meet modern
         technology. Keep your heritage alive, one dish at a time.
@@ -82,7 +86,7 @@ const HeroSection: React.FC = () => {
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-grow px-4 py-2 rounded-l-full border-2 border-primary-500 focus:outline-none focus:border-primary-600 transition-colors"
+          className="flex-grow px-4 py-2 rounded-l-full border-2 border-primary-500 dark:border-primary-700 focus:outline-none focus:border-primary-600 dark:focus:border-primary-600 transition-colors bg-white dark:bg-gray-800 text-text dark:text-text-dark"
         />
         <button
           className="px-6 py-2 rounded-r-full text-white bg-primary-gradient hover:opacity-90 transition-all duration-200 shadow-soft hover:shadow-hover flex items-center"
@@ -117,24 +121,24 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
-    className="bg-primary-100 p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+    className="bg-primary-100 dark:bg-primary-900 p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
   >
     <motion.div
-      className="text-5xl text-primary-600 mb-6 flex justify-center"
+      className="text-5xl text-primary-600 dark:text-primary-300 mb-6 flex justify-center"
       whileHover={{ rotate: 360 }}
       transition={{ duration: 0.6 }}
     >
       {icon}
     </motion.div>
-    <h3 className="text-2xl font-serif font-bold text-primary-700 mb-4">
+    <h3 className="text-2xl font-serif font-bold text-primary-700 dark:text-primary-200 mb-4">
       {title}
     </h3>
-    <p className="text-primary-800">{description}</p>
+    <p className="text-primary-800 dark:text-primary-100">{description}</p>
   </motion.div>
 );
 
 const FeaturesSection: React.FC = () => (
-  <section className="py-16 bg-white">
+  <section className="py-16 bg-white dark:bg-gray-900">
     <div className="container mx-auto px-4">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
@@ -184,7 +188,7 @@ const CallToAction: React.FC = () => {
         Don&apos;t let another family recipe fade away.
       </p>
       <button
-        className="px-10 py-4 text-lg font-semibold rounded-full bg-white text-primary-700 hover:bg-opacity-90 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center mx-auto"
+        className="px-10 py-4 text-lg font-semibold rounded-full bg-white text-primary-700 dark:bg-gray-800 dark:text-primary-300 hover:bg-opacity-90 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center mx-auto"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -208,7 +212,7 @@ const CallToAction: React.FC = () => {
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-background font-sans text-text">
+    <div className="min-h-screen bg-background dark:bg-background-dark font-sans text-text dark:text-text-dark">
       <div className="container mx-auto px-4">
         <Navbar />
         <main>
@@ -216,7 +220,7 @@ const LandingPage: React.FC = () => {
           <FeaturesSection />
           <CallToAction />
         </main>
-        <footer className="py-8 text-center text-textLight">
+        <footer className="py-8 text-center text-textLight dark:text-textLight-dark">
           © {new Date().getFullYear()} The Forgotten Cookbook. All rights
           reserved.
         </footer>

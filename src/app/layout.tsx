@@ -1,4 +1,5 @@
-import { Providers } from "@/redux/provider";
+import { Providers as ReduxProviders } from "@/redux/provider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "@/styles/globals.css";
 import { Inter, Playfair_Display } from "next/font/google";
 
@@ -26,15 +27,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable}`}
+      suppressHydrationWarning
+    >
       <body
         className={`${inter.className} antialiased bg-background text-text`}
       >
-        <Providers>
-          <div className="min-h-screen flex flex-col">
-            <main className="flex-grow">{children}</main>
-          </div>
-        </Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ReduxProviders>
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-grow">{children}</main>
+            </div>
+          </ReduxProviders>
+        </ThemeProvider>
       </body>
     </html>
   );

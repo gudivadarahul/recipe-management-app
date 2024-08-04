@@ -5,7 +5,7 @@
 /* Custom global styles */
 @layer base {
   body {
-    @apply bg-background text-text;
+    @apply bg-background text-text dark:bg-background-dark dark:text-text-dark;
   }
 }
 
@@ -16,15 +16,32 @@
       var(--tw-gradient-from),
       var(--tw-gradient-to)
     );
-    --tw-gradient-from: #e67d6e;
-    --tw-gradient-to: #dc4b34;
+    --tw-gradient-from: theme("colors.primary.500.DEFAULT");
+    --tw-gradient-to: theme("colors.primary.700.DEFAULT");
+  }
+
+  .dark .bg-primary-gradient {
+    --tw-gradient-from: theme("colors.primary.500.dark");
+    --tw-gradient-to: theme("colors.primary.700.dark");
   }
 
   .text-gradient {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to right, #e67d6e, #dc4b34);
+    background-image: linear-gradient(
+      to right,
+      theme("colors.primary.500.DEFAULT"),
+      theme("colors.primary.700.DEFAULT")
+    );
+  }
+
+  .dark .text-gradient {
+    background-image: linear-gradient(
+      to right,
+      theme("colors.primary.500.dark"),
+      theme("colors.primary.700.dark")
+    );
   }
 }
 
