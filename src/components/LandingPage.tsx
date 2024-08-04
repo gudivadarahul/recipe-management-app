@@ -13,14 +13,20 @@ interface FeatureCardProps {
 }
 
 const Navbar: React.FC = () => (
-  <nav className="flex justify-between items-center py-6">
+  <nav
+    className="flex justify-between items-center py-6"
+    role="navigation"
+    aria-label="Main"
+  >
     <motion.div
       className="flex items-center"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Add your logo here */}
+      <a href="/" className="text-2xl font-bold" aria-label="Home">
+        The Forgotten Cookbook
+      </a>
     </motion.div>
     <div className="flex items-center space-x-8">
       <DarkModeToggle />
@@ -32,6 +38,7 @@ const Navbar: React.FC = () => (
         <Link
           href="/sign-up"
           className="text-primary-700 dark:text-primary-300 hover:text-primary-800 dark:hover:text-primary-200 transition-colors"
+          aria-label="Sign up for an account"
         >
           Sign Up
         </Link>
@@ -44,6 +51,7 @@ const Navbar: React.FC = () => (
         <Link
           href="/sign-in"
           className="px-6 py-2 rounded-full bg-primary-gradient text-white hover:opacity-90 transition-opacity shadow-soft hover:shadow-hover"
+          aria-label="Sign in to your account"
         >
           Sign In
         </Link>
@@ -57,8 +65,12 @@ const HeroSection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="flex flex-col items-center text-center py-20">
+    <section
+      className="flex flex-col items-center text-center py-20"
+      aria-labelledby="hero-heading"
+    >
       <motion.h1
+        id="hero-heading"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -81,17 +93,23 @@ const HeroSection: React.FC = () => {
         transition={{ duration: 0.8, delay: 0.4 }}
         className="flex w-full max-w-md mb-8"
       >
+        <label htmlFor="email-input" className="sr-only">
+          Email address
+        </label>
         <input
+          id="email-input"
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="flex-grow px-4 py-2 rounded-l-full border-2 border-primary-500 dark:border-primary-700 focus:outline-none focus:border-primary-600 dark:focus:border-primary-600 transition-colors bg-white dark:bg-gray-800 text-text dark:text-text-dark"
+          aria-label="Enter your email address"
         />
         <button
           className="px-6 py-2 rounded-r-full text-white bg-primary-gradient hover:opacity-90 transition-all duration-200 shadow-soft hover:shadow-hover flex items-center"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          aria-label="Start now"
         >
           <span className="mr-2">Start Now</span>
           <AnimatePresence>
@@ -102,7 +120,7 @@ const HeroSection: React.FC = () => {
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <FaArrowRight />
+                <FaArrowRight aria-hidden="true" />
               </motion.span>
             )}
           </AnimatePresence>
@@ -127,6 +145,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       className="text-5xl text-primary-600 dark:text-primary-300 mb-6 flex justify-center"
       whileHover={{ rotate: 360 }}
       transition={{ duration: 0.6 }}
+      aria-hidden="true"
     >
       {icon}
     </motion.div>
@@ -138,9 +157,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 );
 
 const FeaturesSection: React.FC = () => (
-  <section className="py-16 bg-white dark:bg-gray-900">
+  <section
+    className="py-16 bg-white dark:bg-gray-900"
+    aria-labelledby="features-heading"
+  >
     <div className="container mx-auto px-4">
       <motion.h2
+        id="features-heading"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -178,8 +201,12 @@ const CallToAction: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       className="py-20 text-center bg-primary-gradient text-white rounded-lg my-20 shadow-lg"
+      aria-labelledby="cta-heading"
     >
-      <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">
+      <h2
+        id="cta-heading"
+        className="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight"
+      >
         Start Preserving Your Recipes Today
       </h2>
       <p className="text-xl mb-10 max-w-2xl mx-auto">
@@ -191,6 +218,7 @@ const CallToAction: React.FC = () => {
         className="px-10 py-4 text-lg font-semibold rounded-full bg-white text-primary-700 dark:bg-gray-800 dark:text-primary-300 hover:bg-opacity-90 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center mx-auto"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        aria-label="Create your cookbook"
       >
         <span className="mr-2">Create Your Cookbook</span>
         <AnimatePresence>
@@ -201,7 +229,7 @@ const CallToAction: React.FC = () => {
               exit={{ opacity: 0, width: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <FaArrowRight />
+              <FaArrowRight aria-hidden="true" />
             </motion.span>
           )}
         </AnimatePresence>
