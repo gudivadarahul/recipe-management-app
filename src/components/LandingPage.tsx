@@ -207,7 +207,7 @@ const CallToAction: React.FC = () => {
         id="cta-heading"
         className="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight"
       >
-        Start Preserving Your Recipes Today (FILLER)
+        Start Preserving Your Recipes Today
       </h2>
       <p className="text-xl mb-10 max-w-2xl mx-auto">
         Join thousands of others in keeping their culinary heritage alive.
@@ -220,7 +220,7 @@ const CallToAction: React.FC = () => {
         onMouseLeave={() => setIsHovered(false)}
         aria-label="Create your cookbook"
       >
-        <span className="mr-2">Create Your Cookbook(FILLER)</span>
+        <span className="mr-2">Create Your Cookbook</span>
         <AnimatePresence>
           {isHovered && (
             <motion.span
@@ -250,7 +250,7 @@ const LandingPage: React.FC = () => {
         </main>
         <footer className="py-8 text-center text-textLight dark:text-textLight-dark">
           © {new Date().getFullYear()} The Forgotten Cookbook. All rights
-          (FILLER) reserved.
+          reserved.
         </footer>
       </div>
     </div>
