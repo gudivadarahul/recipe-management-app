@@ -25,7 +25,7 @@ const Navbar: React.FC = () => (
       transition={{ duration: 0.6 }}
     >
       <a href="/" className="text-2xl font-bold" aria-label="Home">
-        The Forgotten Cookbook
+        The Forgotten Cookbook (HEEEEEEEE)
       </a>
     </motion.div>
     <div className="flex items-center space-x-8">
